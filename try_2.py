@@ -40,7 +40,7 @@ while True:
         right_eye_start = 36
         right_eye_end = 42
 
-        landmarks = predictor(faces[0], face)
+        landmarks = predictor(gray, face)
 
         # Extract the left and right eye coordinates
         left_eye = landmarks[left_eye_start:left_eye_end]

@@ -5,7 +5,7 @@ import winsound
 # Function to play beep sound
 def play_beep():
     frequency = 2500  # Set the frequency of the beep sound
-    duration = 100  # Set the duration of the beep sound in milliseconds
+    duration = 1000  # Set the duration of the beep sound in milliseconds
     winsound.Beep(frequency, duration)
 
 def eye_aspect_ratio(eye):
@@ -47,19 +47,7 @@ while True:
             y = landmarks.part(n).y
 
             # Draw a circle on each face landmark
-            cv2.circle(frame, (x, y), 2, (0, 255, 0), -1)
-            # Extract the coordinates of the left eye
-            left_eye_x = landmarks.part(36).x
-            left_eye_y = landmarks.part(36).y
-            left_eye_width = landmarks.part(39).x - landmarks.part(36).x
-            left_eye_height = landmarks.part(41).y - landmarks.part(37).y
-
-            # Extract the coordinates of the right eye
-            right_eye_x = landmarks.part(42).x
-            right_eye_y = landmarks.part(42).y
-            right_eye_width = landmarks.part(45).x - landmarks.part(42).x
-            right_eye_height = landmarks.part(47).y - landmarks.part(43).y
-
+            cv2.circle(frame, (x, y), 1, (0, 255, 0), -1)
             # Use the eye_aspect_ratio function to calculate the eye aspect ratio for the left eye
             left_eye = [(landmarks.part(36).x, landmarks.part(36).y),
                          (landmarks.part(37).x, landmarks.part(37).y),
@@ -83,14 +71,14 @@ while True:
         print("Right Eye Aspect Ratio:", right_ear)
 
                     # Check if the left eye is closed
-        if left_ear < .15:
+        if left_ear < .11:
                         print("Left Eye is closed")
                         play_beep()
         else:
                         print("Left Eye is open")
 
                     # Check if the right eye is closed
-        if right_ear < .15:
+        if right_ear < .12:
                         print("Right Eye is closed")
                         play_beep()
         else:
